@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  rtmp_server:
+    build: ./rtmp_server
+    container_name: rtmp_server_container
+    ports:
+      - "80:80"
+      - "1935:1935"
+    volumes:
+      - ./data:/tmp/hls
+
+  rtmp_auth_server:
+    build: ./rtmp_auth
+    container_name: rtmp_auth_container
+
+  frontend:
+    build: ./frontend
+    container_name: frontend_container
