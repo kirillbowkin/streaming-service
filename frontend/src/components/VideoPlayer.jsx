@@ -15,6 +15,11 @@ function VideoPlayer() {
         config={{
           file: {
             forceHLS: true,
+            // Hide three dots menu
+            attributes: {
+              controlsList:
+                'nofullscreen nodownload noremoteplayback noplaybackrate',
+            },
           },
         }}
       />
