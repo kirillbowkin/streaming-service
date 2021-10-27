@@ -3,22 +3,20 @@ import React from 'react';
 import ReactPlayer from 'react-player';
 
 function VideoPlayer() {
-  const ip = require('ip');
-
   return (
-    <Box h="full" flexGrow={1}>
+    <Box h="full" w="80%">
       <ReactPlayer
-        url={`http://${ip.address()}/hls/test.m3u8`}
+        url={`http://${process.env.REACT_APP_IP_ADDRESS}/hls/test.m3u8`}
         width="100%"
         height="100%"
         controls={true}
+        pip={false}
         config={{
           file: {
             forceHLS: true,
             // Hide three dots menu
             attributes: {
-              controlsList:
-                'nofullscreen nodownload noremoteplayback noplaybackrate',
+              controlsList: 'nodownload noremoteplayback noplaybackrate',
             },
           },
         }}

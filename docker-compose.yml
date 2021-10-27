@@ -16,3 +16,9 @@ services:
   frontend:
     build: ./frontend
     container_name: frontend_container
+
+  chat-backend:
+    build: ./chat-backend
+    ports:
+      - "8080:8080"
+    container_name: chat-backend-container
