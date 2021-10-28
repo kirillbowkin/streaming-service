@@ -48,6 +48,7 @@ function ChatHeader() {
 
   function logout() {
     setUser(null);
+    localStorage.removeItem('user');
   }
 
   function login({ username }) {
@@ -59,6 +60,18 @@ function ChatHeader() {
       uid: uuid(),
       loggedIn: true,
     });
+
+    localStorage.setItem(
+      'user',
+      JSON.stringify({
+        username: username,
+        avatar: `https://avatars.dicebear.com/api/pixel-art-neutral/${
+          Math.random() * 100
+        }.svg`,
+        uid: uuid(),
+        loggedIn: true,
+      })
+    );
 
     onClose();
   }

@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 
 function VideoPlayer() {
