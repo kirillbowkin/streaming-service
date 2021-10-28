@@ -4,7 +4,7 @@ import ReactPlayer from 'react-player';
 
 function VideoPlayer() {
   return (
-    <Box h="full" w="80%">
+    <Box h="full" w={[null, null, null, '80%']}>
       <ReactPlayer
         url={`http://${process.env.REACT_APP_IP_ADDRESS}/hls/test.m3u8`}
         width="100%"
