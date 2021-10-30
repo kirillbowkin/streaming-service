@@ -9,7 +9,7 @@ function Main() {
     <Box as="main" w="full">
       <Stack
         flexDir={['column', 'column', null, 'row']}
-        h={['92vh', null, null, '80vh']}
+        h={['90vh', null, null, '80vh']}
         spacing={0}
         px={2}
       >

@@ -38,18 +38,13 @@ function Chat() {
   }
 
   return (
-    <Box h="full" flexGrow={8}>
+    <Box h="full" flexGrow={[null, null, null, 8]}>
       <VStack h="full" pb={2}>
         <ChatHeader />
-        <VStack w="full" maxH="40vh" px={4} overflowY="auto" flex={1}>
+        <VStack w="full" px={4} overflowY="auto" flex={1}>
           {messages.map(({ text, id, sender }) => (
-            <Box w="full" ref={newMessageRef}>
-              <ChatBubble
-                key={id}
-                sender={sender}
-                message={text}
-                me={user?.uid}
-              />
+            <Box key={id} w="full" ref={newMessageRef}>
+              <ChatBubble sender={sender} message={text} me={user?.uid} />
             </Box>
           ))}
         </VStack>
