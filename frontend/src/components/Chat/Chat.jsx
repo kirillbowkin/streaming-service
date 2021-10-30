@@ -41,7 +41,7 @@ function Chat() {
     <Box h="full" flexGrow={8}>
       <VStack h="full" pb={2}>
         <ChatHeader />
-        <VStack w="full" px={6} overflowY="auto" flex={1}>
+        <VStack w="full" maxH="40vh" px={4} overflowY="auto" flex={1}>
           {messages.map(({ text, id, sender }) => (
             <Box w="full" ref={newMessageRef}>
               <ChatBubble

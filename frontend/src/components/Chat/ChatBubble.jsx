@@ -12,12 +12,12 @@ function ChatBubble({ sender, message, me }) {
   return (
     <VStack mt={6} alignItems={alignment} alignSelf={alignment}>
       {isMe && (
-        <HStack>
+        <HStack alignItems="flex-end">
           <Box
             bg={isMe ? 'blue.50' : 'gray.100'}
             px={4}
             py={2}
-            maxW={80}
+            maxW={72}
             color="black"
             borderTopLeftRadius={32}
             borderTopRightRadius={32}
@@ -30,13 +30,13 @@ function ChatBubble({ sender, message, me }) {
         </HStack>
       )}
       {!isMe && (
-        <HStack>
+        <HStack alignItems="flex-end">
           <Avatar size="sm" src={avatar} />
           <Box
             bg={isMe ? 'blue.50' : 'gray.100'}
             px={4}
             py={2}
-            maxW={80}
+            maxW={72}
             color="black"
             borderTopLeftRadius={32}
             borderTopRightRadius={32}
