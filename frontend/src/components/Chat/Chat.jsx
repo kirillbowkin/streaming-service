@@ -31,7 +31,9 @@ function Chat() {
         },
       };
 
-      clientRef.sendMessage('/app/send', JSON.stringify(message));
+      clientRef.sendMessage('/app/send', JSON.stringify(message), {
+        Authentication: user?.uid,
+      });
 
       messageRef.current.value = '';
     }

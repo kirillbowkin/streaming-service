@@ -13,9 +13,9 @@ public class CustomHandshakeInterceptor implements HandshakeInterceptor {
     @Override
     public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
             Map<String, Object> attributes) throws Exception {
-        String ip = request.getRemoteAddress().toString().split(":")[0].substring(1);
-        attributes.put("ip", ip);
-        log.info("Ip address {} connected to chat", ip);
+        // String ip = request.getRemoteAddress().toString().split(":")[0].substring(1);
+        // attributes.put("ip", ip);
+        // log.info("Ip address {} connected to chat", ip);
         return true;
     }
 

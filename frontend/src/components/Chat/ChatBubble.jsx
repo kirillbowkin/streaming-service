@@ -1,9 +1,9 @@
 import { Avatar } from '@chakra-ui/avatar';
-import { Box, Text, VStack, HStack } from '@chakra-ui/layout';
+import { Box, Text, VStack, HStack, Badge } from '@chakra-ui/layout';
 import React from 'react';
 
 function ChatBubble({ sender, message, me }) {
-  const { name, uid, avatar } = sender;
+  const { name, uid, avatar, admin } = sender;
   const isMe = uid === me;
   const alignment = isMe ? 'flex-end' : 'flex-start';
   const bottomRightRadius = isMe ? 0 : 32;
@@ -47,9 +47,12 @@ function ChatBubble({ sender, message, me }) {
           </Box>
         </HStack>
       )}
-      <Text fontSize="md" color="gray">
-        {name}
-      </Text>
+      <VStack pt={2} justifyContent="center" alignItems="center">
+        {admin && <Badge colorScheme="green">ADMIN</Badge>}
+        <Text fontSize="md" color="gray">
+          {name}
+        </Text>
+      </VStack>
     </VStack>
   );
 }

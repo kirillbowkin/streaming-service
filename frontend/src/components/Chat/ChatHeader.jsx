@@ -22,6 +22,8 @@ import {
   Input,
   ModalFooter,
   FormErrorMessage,
+  useToast,
+  Badge,
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import React, { useContext, useEffect, useRef } from 'react';
@@ -37,6 +39,8 @@ function ChatHeader() {
   const initialRef = useRef();
   const finalRef = useRef();
 
+  const toast = useToast();
+
   const {
     handleSubmit,
     register,
@@ -46,30 +50,31 @@ function ChatHeader() {
   const context = useContext(UserContext);
   const { user, setUser } = context;
 
-  function logout() {
+  async function logout() {
     setUser(null);
     localStorage.removeItem('user');
   }
 
-  function login({ username }) {
-    setUser({
+  async function login({ username }) {
+    const userToSave = {
       username: username,
       avatar: `https://avatars.dicebear.com/api/pixel-art-neutral/${
         Math.random() * 100
       }.svg`,
       uid: uuid(),
       loggedIn: true,
-    });
+    };
+
+    setUser(userToSave);
 
     localStorage.setItem(
       'user',
       JSON.stringify({
-        username: username,
-        avatar: `https://avatars.dicebear.com/api/pixel-art-neutral/${
-          Math.random() * 100
-        }.svg`,
-        uid: uuid(),
-        loggedIn: true,
+        username: userToSave?.username,
+        avatar: userToSave?.avatar,
+        uid: userToSave?.uid,
+        loggedIn: userToSave?.loggedIn,
+        // _admin: data?.admin,
       })
     );
 
@@ -96,6 +101,10 @@ function ChatHeader() {
                 <Avatar size={'2xl'} src={user?.avatar} />
               </Center>
               <br />
+              <Center>
+                {user?._admin && <Badge colorScheme="green">ADMIN</Badge>}
+              </Center>
+
               <Center>
                 <p>{user?.username}</p>
               </Center>

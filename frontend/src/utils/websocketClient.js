@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 import PropTypes from 'prop-types';
+import { UserContext } from '../context/UserContext';
 
 class SockJsClient extends React.Component {
+  static context = UserContext;
+
   static defaultProps = {
     onConnect: () => {},
     onDisconnect: () => {},
     getRetryInterval: count => {
       return 1000 * count;
     },
-    url: `http://${process.env.REACT_APP_IP_ADDRESS}:8080/stomp-endpoint`,
-    headers: {},
+    url: `http://${process.env.REACT_APP_IP_ADDRESS}:9090/stomp-endpoint`,
+    headers: {
+      Authentication: 'test',
+    },
     autoReconnect: true,
     debug: false,
     topics: ['/topic/chat'],
